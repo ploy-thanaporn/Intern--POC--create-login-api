@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 const Login = () => {
+  let navigate = useNavigate();
+
+  function LoginSubmit() {
+    navigate("/dashboard");
+  }
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
@@ -32,6 +38,7 @@ const Login = () => {
       setPasswordColor("red");
     }
   };
+
   return (
     <div className="container" onSubmit={validateForm}>
       <form className="form">
@@ -57,7 +64,9 @@ const Login = () => {
           <small style={{ color: passwordColor }}>{errorPassword}</small>
         </div>
         <div className="btn">
-          <button type="submit">Login</button>
+          <button type="submit" onClick={LoginSubmit}>
+            Login
+          </button>
         </div>
       </form>
     </div>
