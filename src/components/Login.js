@@ -17,31 +17,29 @@ const Login = () => {
 
     let isValid = false;
 
-    if (email.includes("@")) {
+    let pwdRegex = /^(?=.{10,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#S%^!&*+=]).*$/;
+    // eslint-disable-next-line no-useless-escape
+    let mailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (mailRegex.test(email)) {
       setErrorEmail("");
       setEmailColor("green");
-
       isValid = true;
     } else {
       setErrorEmail("Invalid email format");
       setEmailColor("red");
-
       isValid = false;
     }
 
-    let pwd = /^(?=.{10,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#S%^!&*+=]).*$/;
-
-    if (pwd.test(password)) {
+    if (pwdRegex.test(password)) {
       setErrorPassword("");
       setPasswordColor("green");
-
       isValid = true;
     } else {
       setErrorPassword(
         "have a minimum of 10 characters, allow only English characters, contain at least 1 lower and 1 upper, contain at least 1 special character and required validator"
       );
       setPasswordColor("red");
-
       isValid = false;
     }
 
