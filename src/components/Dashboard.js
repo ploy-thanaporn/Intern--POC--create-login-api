@@ -1,9 +1,10 @@
 import React from "react";
+import "./Login.css";
 
 const Dashboard = () => {
   return (
-    <div>
-      <h1>Suceess</h1>
+    <div className="container-success">
+      <h2>User is successfully logged in</h2>
     </div>
   );
 };
